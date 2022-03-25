@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CIVIC Registration Form</title>
+  <link rel="icon" href="civic.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    p.finePrint {
+        color:#818185;
+        font-size:70%;
+    }
+  </style>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+  <script type="text/javascript">
+    (function()
+    {
+        var Applicant = {
+            fname: "",
+            lname: "",
+            age: 0,
+            phonenum: "",
+            email: ""
+        };
+
+        var storageLogic = {
+            saveItem: function (){
+                var lscount = localStorage.length;
+                var inputs = document.getElementsByClassName("form-control");
+                Applicant.fname = inputs[0].value;
+                Applicant.lname = inputs[1].value;
+                Applicant.age = inputs[2].value;
+                Applicant.phonenum = inputs[3].value;
+                Applicant.email = inputs[4].value;
+
+                localStorage.setItem("Applicant_" + lscount, JSON.stringify(Applicant));
+                location.reload();
+
+            },
+
+            loaddata: function() {
+                var datacount = localStorage.length;
+                if (datacount > 0)
+                {
+                    var render = "<table border='1'>";
+                    render += "<tr><th>First Name</th><th>Last Name</th><th>Age</th>" + 
+                    "<th>Phone Number</th><th>Email</th>";
+                    for (i=0; i < datacount; i++) {
+                        var key = localStorage.key(i);
+                        var applicant = localStorage.getItem(key);
+                        var data = JSON.parse(applicant);
+                        console.log(data);
+                        render += "<tr><td>" + data.fname + "</td><td>" + data.lname + "</td>";
+                        render += "<td>" + data.age + "</td>";
+                        render += "<td>" + data.phonenum + "</td>";
+                        render += "<td>" + data.email + "</td>";
+                    }
+                    render += "</table>";
+                    var newTable = document.getElementById("dvContainer");
+                    newTable.innerHTML = render;
+                }
+            }
+        };
+        window.onload = function() {
+            storageLogic.loaddata();
+      var btnsubmit = document.getElementById('btnsubmit');
+      btnsubmit.addEventListener('click', storageLogic.saveItem, false);
+        };
+    })();
+  </script>
+</head>
+<body>
+
+    <div class="container">
+      <h2 style="color:#005E28"><img src="civic.jpg" height="50" width="50"></img>CIVIC Registration Form</h2>
+      <form role="form">
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" class="form-control" id="fname" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" class="form-control" id="lname" placeholder="Last Name">
+        </div>
+        <div class="form-inline">
+            <label for="age">Age: <input type="text" class="form-control" id="age" placeholder="Age"></label>
+            <label for="phone">Phone Number: <input type="text" class="form-control" id="phonenum" placeholder="Phone Number"></label>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div>
+        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+            <input id="btnsubmit" type="button" value="Submit" class="btn btn-success"/>
+            <p class="finePrint">*By submitting this form you agree to receiving emails regarding 
+            upcoming events and other information from CIVIC Ontario. 
+            If you have any questions or concerns, please email civicontario@gmail.com*</p>
+        </div>
+      </form>
+    </div>
+    <div id="dvContainer" class="conatiner">
+    </div>
+
+</body>
+</html>
