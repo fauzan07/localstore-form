@@ -15,11 +15,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="resturent-form border shadow p-4">
-                        <h1 class="text-center">Aromatic Bar</h1>
+                        <h1 class="text-center text-primary">Aromatic Bar</h1>
                         <p class="text-center">We are committed to providing you with the best
                             dining experience possible, so we welcome your comments. Please fill
                             out this questionnaire. Thank you.</p>
-                          <form action="thankyou.html" id="submit_form">
+                            <div id="alert-err">
+                              <p></p>
+                            </div>
+                          <form id="submit_form">
                             <div class="form-group">
                                 <label for="customer_name">Customer Name</label>
                                 <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Enter Customer Name" required>
@@ -35,19 +38,19 @@
                               <div class="form-group">
                                 <label for="exampleFormControlSelect2">Please rate the quality of the service you received from your host.</label>
                                 <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="rate_quality" name="rate_quality" value="excellent">
+                                    <input type="radio" class="form-check-input" id="rate_quality" name="rate_quality" value="excellent">
                                     <label class="form-check-label" for="excellent">Excellent</label>
                                   </div>
                                   <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="rate_quality" name="rate_quality" value="good">
+                                    <input type="radio" class="form-check-input" id="rate_quality" name="rate_quality" value="good">
                                     <label class="form-check-label" for="good">good</label>
                                   </div>
                                   <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="rate_quality" name="rate_quality" value="fair">
+                                    <input type="radio" class="form-check-input" id="rate_quality" name="rate_quality" value="fair">
                                     <label class="form-check-label" for="fair">fair</label>
                                   </div>
                                   <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="rate_quality" name="rate_quality" value="bad">
+                                    <input type="radio" class="form-check-input" id="rate_quality" name="rate_quality" value="bad">
                                     <label class="form-check-label" for="bad">bad</label>
                                   </div>
                               </div>
@@ -110,20 +113,42 @@
                               </div>
                               <input id="sava_data" type="button" value="Submit" class="btn btn-success btn-sm"/>
                         </form>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <section class="feedback-leads my-5">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-12">
+                  <div class="border shadow p-4">
+                      <h3>All Feeback leads</h3>
+                      <div class="table-responsive mt-4">
+                          <table class="table table-bordered bg-white text-nowrap" id="user_list">
+                              <thead  class="thead-light bg-light">
+                                  <tr>
+                                      <th class="border-top-0">Name</th>
+                                      <th class="border-top-0">Email</th>
+                                      <th class="border-top-0">Phone</th>
+                                      <th class="border-top-0">Quality of service</th>
+                                      <th class="border-top-0">Quality of beverage</th>
+                                      <th class="border-top-0">Resturant Clean rating</th>
+                                      <th class="border-top-0">Over all Expirence</th>
+                                  </tr>
+                              </thead>
+                              <tbody id="user_trs">
+      
+                              </tbody>
+                          </table>
+              </div>
+          </div>
+      </div>
+  </section>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
